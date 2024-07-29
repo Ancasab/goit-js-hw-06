@@ -27,19 +27,26 @@
 "use strict";
 
 const validationInput = document.getElementById("validation-input");
+console.log(validationInput);
+
+const requiredLength = Number(validationInput.dataset.length);
+console.log(`Required length of the input ${requiredLength}`);
+
 
 validationInput.addEventListener('blur', () => {
-    const requiredLength = Number(validationInput.dataset.length);
-    console.log(`Required length of the input ${requiredLength}`);
 
     const inputLength = validationInput.value.length;
     console.log(`Length of the actual input ${inputLength}`);
 
-    if (inputLength === requiredLength) {
+    validationInput.classList.remove('valid', 'invalid');
+
+    if (inputLength >= requiredLength) {
         validationInput.classList.add('valid');
         console.log(`Valid input`);
     } else {
         validationInput.classList.add('invalid');
         console.log(`Invadid input - try again`);
     }
+
+
 });
